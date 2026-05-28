@@ -3,21 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Las Aventuras de Carpinchio Cósmico</title>
+  <title>El Carpinchio Cósmico · Las Aventuras</title>
 
   <style>
     :root {
-      --bg: #050816;
-      --bg-2: #0b1028;
+      --space-0: #02040d;
+      --space-1: #070b22;
+      --space-2: #101844;
       --accent: #cbfe00;
-      --accent-2: #8ee8ff;
+      --cyan: #8ee8ff;
+      --purple: #9c6cff;
       --pink: #ff5ef7;
+      --orange: #ffb347;
+      --danger: #ff5a7a;
       --card: rgba(255, 255, 255, 0.08);
       --card-2: rgba(255, 255, 255, 0.13);
       --border: rgba(255, 255, 255, 0.18);
       --text: #ffffff;
       --muted: rgba(255, 255, 255, 0.72);
-      --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+      --soft: rgba(255, 255, 255, 0.56);
+      --shadow: 0 28px 90px rgba(0, 0, 0, 0.55);
     }
 
     * {
@@ -32,13 +37,13 @@
 
     body {
       min-height: 100vh;
-      font-family: Inter, Arial, Helvetica, sans-serif;
       color: var(--text);
+      font-family: Inter, Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(circle at 15% 20%, rgba(203, 254, 0, 0.18), transparent 24%),
-        radial-gradient(circle at 85% 15%, rgba(142, 232, 255, 0.20), transparent 28%),
-        radial-gradient(circle at 65% 80%, rgba(255, 94, 247, 0.16), transparent 24%),
-        linear-gradient(135deg, #03040d 0%, #080b1f 38%, #101640 100%);
+        radial-gradient(circle at 15% 16%, rgba(203, 254, 0, 0.16), transparent 26%),
+        radial-gradient(circle at 86% 10%, rgba(142, 232, 255, 0.20), transparent 28%),
+        radial-gradient(circle at 70% 85%, rgba(255, 94, 247, 0.16), transparent 30%),
+        linear-gradient(135deg, var(--space-0) 0%, var(--space-1) 44%, var(--space-2) 100%);
       overflow-x: hidden;
     }
 
@@ -48,71 +53,81 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      z-index: -2;
     }
 
     body::before {
+      z-index: -4;
       background-image:
-        radial-gradient(#ffffff 0.8px, transparent 0.8px),
-        radial-gradient(#ffffff 0.6px, transparent 0.6px);
-      background-size: 72px 72px, 120px 120px;
-      background-position: 0 0, 40px 70px;
+        radial-gradient(#ffffff 0.8px, transparent 0.9px),
+        radial-gradient(#ffffff 0.6px, transparent 0.7px),
+        radial-gradient(var(--cyan) 0.7px, transparent 0.8px);
+      background-size: 72px 72px, 118px 118px, 180px 180px;
+      background-position: 0 0, 34px 70px, 90px 10px;
       opacity: 0.36;
-      animation: starMove 42s linear infinite;
+      animation: stars 52s linear infinite;
     }
 
     body::after {
+      z-index: -3;
       background:
-        radial-gradient(circle at 50% 50%, transparent 0%, rgba(5, 8, 22, 0.12) 45%, rgba(0, 0, 0, 0.65) 100%);
-      z-index: -1;
+        radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.18) 54%, rgba(0, 0, 0, 0.72) 100%);
     }
 
-    @keyframes starMove {
+    @keyframes stars {
       from { transform: translateY(0); }
-      to { transform: translateY(180px); }
+      to { transform: translateY(190px); }
+    }
+
+    .nebula {
+      position: fixed;
+      right: -18%;
+      bottom: -26%;
+      width: 62vw;
+      height: 62vw;
+      min-width: 560px;
+      min-height: 560px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, rgba(203, 254, 0, 0.10), transparent 34%),
+        conic-gradient(from 120deg, rgba(142, 232, 255, 0.0), rgba(142, 232, 255, 0.18), rgba(156, 108, 255, 0.24), rgba(203, 254, 0, 0.13), rgba(142, 232, 255, 0.0));
+      filter: blur(26px);
+      opacity: 0.95;
+      z-index: -2;
+      animation: nebulaSpin 38s linear infinite;
     }
 
     .planet {
       position: fixed;
       border-radius: 50%;
-      filter: blur(0.2px);
       pointer-events: none;
       z-index: -1;
     }
 
     .planet.one {
-      width: 230px;
-      height: 230px;
-      top: 90px;
-      right: -70px;
+      width: 220px;
+      height: 220px;
+      right: -78px;
+      top: 120px;
       background:
-        radial-gradient(circle at 35% 30%, #fff6b7 0%, #ff8a00 28%, #9c2bff 72%, #25004f 100%);
-      box-shadow: 0 0 80px rgba(255, 138, 0, 0.35);
-      opacity: 0.86;
+        radial-gradient(circle at 35% 30%, #fff6b7 0%, #ff9e2c 27%, #9c2bff 72%, #24003f 100%);
+      box-shadow: 0 0 80px rgba(255, 158, 44, 0.34);
+      opacity: 0.82;
     }
 
     .planet.two {
-      width: 110px;
-      height: 110px;
-      bottom: 80px;
-      left: 6%;
+      width: 98px;
+      height: 98px;
+      left: 5%;
+      bottom: 8%;
       background:
         radial-gradient(circle at 35% 30%, #ffffff 0%, #8ee8ff 30%, #2448ff 100%);
-      box-shadow: 0 0 60px rgba(142, 232, 255, 0.35);
-      opacity: 0.75;
+      box-shadow: 0 0 64px rgba(142, 232, 255, 0.32);
+      opacity: 0.7;
     }
 
-    .orbit {
-      position: fixed;
-      width: 520px;
-      height: 520px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 50%;
-      top: 30px;
-      right: -220px;
-      transform: rotate(-18deg);
-      pointer-events: none;
-      z-index: -1;
+    @keyframes nebulaSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
 
     .nav {
@@ -123,34 +138,47 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.07);
-      backdrop-filter: blur(18px);
-      border-radius: 22px;
-      box-shadow: var(--shadow);
       position: sticky;
       top: 14px;
-      z-index: 10;
+      z-index: 50;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: rgba(5, 8, 22, 0.72);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 14px 50px rgba(0, 0, 0, 0.32);
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 12px;
-      font-weight: 900;
-      letter-spacing: -0.03em;
+      min-width: 0;
     }
 
     .brand-mark {
-      width: 42px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
       display: grid;
       place-items: center;
-      border-radius: 15px;
-      background: linear-gradient(135deg, var(--accent), #ffffff);
+      flex: 0 0 44px;
+      border-radius: 16px;
       color: #111;
-      box-shadow: 0 0 30px rgba(203, 254, 0, 0.45);
       font-size: 22px;
+      background: linear-gradient(135deg, var(--accent), #ffffff);
+      box-shadow: 0 0 34px rgba(203, 254, 0, 0.42);
+    }
+
+    .brand-title strong {
+      display: block;
+      font-size: 15px;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-title span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 2px;
     }
 
     .nav-links {
@@ -164,72 +192,16 @@
     .nav-links a {
       color: var(--muted);
       text-decoration: none;
-      font-size: 14px;
-      font-weight: 700;
+      font-size: 13px;
+      font-weight: 900;
       padding: 10px 13px;
       border-radius: 999px;
       transition: 0.2s ease;
     }
 
     .nav-links a:hover {
-      color: #101010;
+      color: #111;
       background: var(--accent);
-    }
-
-    .hero {
-      width: min(1180px, calc(100% - 32px));
-      margin: 72px auto 56px;
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 32px;
-      align-items: center;
-    }
-
-    .hero-copy {
-      position: relative;
-    }
-
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 13px;
-      border: 1px solid rgba(203, 254, 0, 0.35);
-      background: rgba(203, 254, 0, 0.08);
-      color: var(--accent);
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 22px;
-    }
-
-    h1 {
-      font-size: clamp(46px, 8vw, 94px);
-      line-height: 0.9;
-      letter-spacing: -0.08em;
-      margin-bottom: 24px;
-    }
-
-    h1 span {
-      color: var(--accent);
-      text-shadow: 0 0 38px rgba(203, 254, 0, 0.35);
-    }
-
-    .hero-copy p {
-      max-width: 660px;
-      color: var(--muted);
-      font-size: clamp(17px, 2vw, 21px);
-      line-height: 1.65;
-      margin-bottom: 28px;
-    }
-
-    .actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      align-items: center;
     }
 
     .btn {
@@ -238,11 +210,12 @@
       justify-content: center;
       gap: 10px;
       text-decoration: none;
-      border-radius: 16px;
+      border-radius: 17px;
       padding: 15px 20px;
-      font-weight: 900;
-      transition: 0.2s ease;
+      font-weight: 950;
+      transition: 0.22s ease;
       border: 1px solid transparent;
+      white-space: nowrap;
     }
 
     .btn-primary {
@@ -268,40 +241,125 @@
       transform: translateY(-2px);
     }
 
-    .hero-card {
-      position: relative;
-      min-height: 520px;
+    .hero {
+      width: min(1180px, calc(100% - 32px));
+      margin: 76px auto 72px;
+      display: grid;
+      grid-template-columns: 1.04fr 0.96fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 13px;
+      border: 1px solid rgba(203, 254, 0, 0.35);
+      background: rgba(203, 254, 0, 0.08);
+      color: var(--accent);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(46px, 8vw, 92px);
+      line-height: 0.91;
+      letter-spacing: -0.085em;
+      margin-bottom: 24px;
+    }
+
+    h1 span {
+      color: var(--accent);
+      text-shadow: 0 0 38px rgba(203, 254, 0, 0.35);
+    }
+
+    .hero-copy p {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.65;
+      margin-bottom: 28px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 26px;
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      max-width: 620px;
+    }
+
+    .metric {
+      padding: 16px;
       border: 1px solid var(--border);
-      border-radius: 34px;
-      background:
-        linear-gradient(160deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.05)),
-        radial-gradient(circle at 50% 20%, rgba(203, 254, 0, 0.16), transparent 34%);
-      backdrop-filter: blur(22px);
-      box-shadow: var(--shadow);
-      overflow: hidden;
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 22px;
+      backdrop-filter: blur(18px);
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--accent);
+      font-size: 27px;
+      letter-spacing: -0.04em;
+      margin-bottom: 4px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+      font-weight: 800;
+    }
+
+    .hero-stage {
+      position: relative;
+      min-height: 560px;
       display: grid;
       place-items: center;
+      border: 1px solid var(--border);
+      border-radius: 38px;
+      background:
+        linear-gradient(160deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.045)),
+        radial-gradient(circle at 50% 35%, rgba(203, 254, 0, 0.18), transparent 34%),
+        radial-gradient(circle at 28% 72%, rgba(142, 232, 255, 0.16), transparent 30%);
+      backdrop-filter: blur(24px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
       padding: 28px;
     }
 
-    .hero-card::before {
+    .hero-stage::before {
       content: "";
       position: absolute;
-      width: 420px;
-      height: 420px;
-      border: 1px dashed rgba(255, 255, 255, 0.22);
+      width: 520px;
+      height: 520px;
       border-radius: 50%;
-      animation: rotate 24s linear infinite;
+      border: 1px dashed rgba(255, 255, 255, 0.20);
+      animation: rotate 26s linear infinite;
     }
 
-    .hero-card::after {
+    .hero-stage::after {
       content: "";
       position: absolute;
-      width: 260px;
-      height: 260px;
-      border: 1px solid rgba(203, 254, 0, 0.24);
+      width: 330px;
+      height: 330px;
       border-radius: 50%;
-      animation: rotate 16s linear infinite reverse;
+      border: 1px solid rgba(203, 254, 0, 0.28);
+      box-shadow: 0 0 72px rgba(203, 254, 0, 0.12);
+      animation: rotate 18s linear infinite reverse;
     }
 
     @keyframes rotate {
@@ -309,87 +367,56 @@
       to { transform: rotate(360deg); }
     }
 
-    .carpinchio {
+    .hero-img {
       position: relative;
-      z-index: 1;
-      width: min(330px, 78vw);
-      aspect-ratio: 1;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background:
-        radial-gradient(circle at 50% 38%, #ba7a3a 0 18%, transparent 18.5%),
-        radial-gradient(circle at 50% 58%, #9a5d2e 0 33%, transparent 33.5%),
-        radial-gradient(circle at 40% 50%, #1a0e08 0 3%, transparent 3.4%),
-        radial-gradient(circle at 60% 50%, #1a0e08 0 3%, transparent 3.4%),
-        radial-gradient(circle at 50% 62%, #3b2114 0 4%, transparent 4.4%),
-        linear-gradient(145deg, #d99b52, #71401e);
-      box-shadow:
-        inset -22px -30px 60px rgba(0, 0, 0, 0.25),
-        0 0 70px rgba(203, 254, 0, 0.28);
-      animation: float 4.8s ease-in-out infinite;
+      z-index: 3;
+      width: min(430px, 86%);
+      max-height: 470px;
+      object-fit: contain;
+      filter:
+        drop-shadow(0 30px 38px rgba(0, 0, 0, 0.55))
+        drop-shadow(0 0 32px rgba(142, 232, 255, 0.28));
+      animation: floatHero 4.8s ease-in-out infinite;
     }
 
-    .carpinchio::before {
-      content: "";
+    @keyframes floatHero {
+      0%, 100% { transform: translateY(0) rotate(-1.6deg); }
+      50% { transform: translateY(-18px) rotate(1.6deg); }
+    }
+
+    .floating-note {
       position: absolute;
-      inset: -22px;
-      border-radius: 50%;
-      border: 14px solid rgba(220, 255, 255, 0.35);
-      box-shadow:
-        inset 0 0 28px rgba(142, 232, 255, 0.45),
-        0 0 55px rgba(142, 232, 255, 0.22);
-    }
-
-    .carpinchio::after {
-      content: "🚀";
-      position: absolute;
-      right: -28px;
-      bottom: 28px;
-      font-size: 54px;
-      transform: rotate(18deg);
-      filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.35));
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(-2deg); }
-      50% { transform: translateY(-18px) rotate(2deg); }
-    }
-
-    .stats {
-      position: absolute;
-      left: 24px;
-      right: 24px;
-      bottom: 24px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      z-index: 2;
-    }
-
-    .stat {
-      padding: 14px;
-      border: 1px solid var(--border);
-      background: rgba(0, 0, 0, 0.25);
+      z-index: 4;
+      padding: 13px 15px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(0, 0, 0, 0.28);
+      backdrop-filter: blur(14px);
       border-radius: 18px;
-      backdrop-filter: blur(12px);
-    }
-
-    .stat strong {
-      display: block;
-      color: var(--accent);
-      font-size: 20px;
-    }
-
-    .stat span {
       color: var(--muted);
-      font-size: 12px;
-      font-weight: 700;
+      font-size: 13px;
+      font-weight: 850;
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.28);
+    }
+
+    .floating-note strong {
+      color: var(--accent);
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .note-one {
+      left: 22px;
+      top: 28px;
+    }
+
+    .note-two {
+      right: 24px;
+      bottom: 28px;
     }
 
     section {
       width: min(1180px, calc(100% - 32px));
-      margin: 0 auto 56px;
+      margin: 0 auto 74px;
     }
 
     .section-head {
@@ -397,150 +424,300 @@
       justify-content: space-between;
       align-items: end;
       gap: 18px;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
     .section-head h2 {
-      font-size: clamp(30px, 4vw, 52px);
-      letter-spacing: -0.06em;
+      font-size: clamp(32px, 5vw, 58px);
+      line-height: 0.94;
+      letter-spacing: -0.075em;
+    }
+
+    .section-head h2 span {
+      color: var(--accent);
     }
 
     .section-head p {
       color: var(--muted);
       max-width: 520px;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
-    .mission-grid {
+    .story-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
     }
 
-    .mission {
-      min-height: 220px;
-      padding: 22px;
+    .story-card {
+      min-height: 250px;
+      padding: 24px;
       border: 1px solid var(--border);
-      background: var(--card);
-      border-radius: 26px;
-      backdrop-filter: blur(18px);
-      box-shadow: 0 18px 55px rgba(0, 0, 0, 0.26);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.045));
+      border-radius: 30px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 20px 58px rgba(0, 0, 0, 0.26);
       position: relative;
       overflow: hidden;
     }
 
-    .mission::before {
+    .story-card::before {
       content: "";
       position: absolute;
-      width: 130px;
-      height: 130px;
-      right: -40px;
-      top: -40px;
+      width: 160px;
+      height: 160px;
+      right: -54px;
+      top: -54px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(203, 254, 0, 0.22), transparent 70%);
+      background: radial-gradient(circle, rgba(203, 254, 0, 0.20), transparent 70%);
     }
 
-    .mission .icon {
-      width: 52px;
-      height: 52px;
+    .story-card:nth-child(2)::before {
+      background: radial-gradient(circle, rgba(142, 232, 255, 0.22), transparent 70%);
+    }
+
+    .story-card:nth-child(3)::before {
+      background: radial-gradient(circle, rgba(255, 94, 247, 0.20), transparent 70%);
+    }
+
+    .story-icon {
+      width: 56px;
+      height: 56px;
       display: grid;
       place-items: center;
-      border-radius: 18px;
+      border-radius: 20px;
       background: rgba(255, 255, 255, 0.12);
       border: 1px solid var(--border);
-      font-size: 25px;
+      font-size: 27px;
       margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
     }
 
-    .mission h3 {
-      font-size: 21px;
-      margin-bottom: 10px;
-      letter-spacing: -0.03em;
+    .story-card h3 {
+      position: relative;
+      z-index: 1;
+      font-size: 23px;
+      letter-spacing: -0.04em;
+      margin-bottom: 11px;
     }
 
-    .mission p {
+    .story-card p {
+      position: relative;
+      z-index: 1;
       color: var(--muted);
-      line-height: 1.6;
+      line-height: 1.62;
       font-size: 15px;
     }
 
-    .viewer-section {
-      margin-bottom: 72px;
+    .countdown-strip {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 18px;
+      align-items: stretch;
     }
 
-    .viewer-card {
-      border: 1px solid var(--border);
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.05));
+    .countdown-box {
+      border: 1px solid rgba(203, 254, 0, 0.28);
       border-radius: 34px;
-      overflow: hidden;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(203, 254, 0, 0.18), transparent 32%),
+        rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      padding: 28px;
       box-shadow: var(--shadow);
+    }
+
+    .countdown-box h2 {
+      font-size: clamp(34px, 6vw, 70px);
+      letter-spacing: -0.08em;
+      line-height: 0.9;
+      margin-bottom: 18px;
+    }
+
+    .countdown-box h2 span {
+      color: var(--accent);
+    }
+
+    .countdown-box p {
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 16px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+
+    .time-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      padding: 17px;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.07);
       backdrop-filter: blur(18px);
     }
 
-    .viewer-top {
-      padding: 18px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .time-number {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: rgba(203, 254, 0, 0.12);
+      border: 1px solid rgba(203, 254, 0, 0.24);
+      color: var(--accent);
+      font-weight: 950;
+      line-height: 1;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .time-item h3 {
+      font-size: 18px;
+      margin-bottom: 5px;
+      letter-spacing: -0.03em;
+    }
+
+    .time-item p {
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .characters {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 14px;
-      border-bottom: 1px solid var(--border);
-      background: rgba(0, 0, 0, 0.22);
     }
 
-    .viewer-title {
+    .character {
+      padding: 20px;
+      min-height: 210px;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.075);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.22);
+    }
+
+    .character .avatar {
+      width: 62px;
+      height: 62px;
+      display: grid;
+      place-items: center;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.05));
+      border: 1px solid var(--border);
+      font-size: 31px;
+      margin-bottom: 16px;
+    }
+
+    .character h3 {
+      font-size: 20px;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
+    }
+
+    .character p {
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 14px;
+    }
+
+    .reader-section {
+      margin-bottom: 52px;
+    }
+
+    .reader-shell {
+      border: 1px solid var(--border);
+      border-radius: 36px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.045)),
+        rgba(5, 8, 22, 0.66);
+      backdrop-filter: blur(22px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .reader-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: center;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(0, 0, 0, 0.24);
+    }
+
+    .reader-head small {
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-weight: 900;
+      gap: 8px;
+      color: var(--accent);
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 11px;
+      margin-bottom: 7px;
     }
 
-    .live-dot {
-      width: 12px;
-      height: 12px;
+    .reader-head small::before {
+      content: "";
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
       background: var(--accent);
-      box-shadow: 0 0 18px var(--accent);
+      box-shadow: 0 0 15px var(--accent);
     }
 
-    .viewer-wrapper {
+    .reader-head h2 {
+      font-size: clamp(21px, 3vw, 34px);
+      letter-spacing: -0.05em;
+    }
+
+    .viewer-frame {
       width: 100%;
-      height: 78vh;
-      min-height: 460px;
-      background: #050816;
+      height: 82vh;
+      min-height: 650px;
+      background: #03040d;
     }
 
-    .viewer-wrapper iframe {
+    .viewer-frame iframe {
       width: 100%;
       height: 100%;
       display: block;
       border: none;
     }
 
-    .callout {
+    .reader-foot {
       display: grid;
       grid-template-columns: 1fr auto;
-      gap: 20px;
+      gap: 14px;
       align-items: center;
-      padding: 26px;
-      border: 1px solid rgba(203, 254, 0, 0.28);
-      background:
-        radial-gradient(circle at 20% 20%, rgba(203, 254, 0, 0.14), transparent 30%),
-        rgba(255, 255, 255, 0.08);
-      border-radius: 30px;
-      backdrop-filter: blur(18px);
-      margin-bottom: 72px;
-    }
-
-    .callout h2 {
-      font-size: clamp(28px, 4vw, 48px);
-      letter-spacing: -0.06em;
-      margin-bottom: 8px;
-    }
-
-    .callout p {
+      padding: 14px 20px;
+      border-top: 1px solid var(--border);
+      background: rgba(0, 0, 0, 0.22);
       color: var(--muted);
-      line-height: 1.6;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(203, 254, 0, 0.28);
+      background: rgba(203, 254, 0, 0.08);
+      color: var(--accent);
+      font-weight: 950;
+      white-space: nowrap;
     }
 
     footer {
@@ -549,7 +726,7 @@
       padding: 24px;
       border: 1px solid var(--border);
       background: rgba(255, 255, 255, 0.06);
-      border-radius: 26px;
+      border-radius: 28px;
       color: var(--muted);
       display: flex;
       justify-content: space-between;
@@ -562,196 +739,301 @@
       color: #ffffff;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 1000px) {
+      .hero,
+      .countdown-strip {
+        grid-template-columns: 1fr;
+      }
+
       .hero {
+        margin-top: 46px;
+      }
+
+      .hero-stage {
+        min-height: 500px;
+      }
+
+      .story-grid {
         grid-template-columns: 1fr;
-        margin-top: 42px;
       }
 
-      .hero-card {
-        min-height: 460px;
+      .characters {
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      .mission-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .section-head,
-      .callout {
-        grid-template-columns: 1fr;
-        align-items: start;
-      }
-
-      .callout {
+      .section-head {
         display: block;
       }
 
-      .callout .btn {
-        margin-top: 18px;
+      .section-head p {
+        margin-top: 12px;
       }
     }
 
-    @media (max-width: 640px) {
-      .nav {
-        align-items: flex-start;
-      }
-
+    @media (max-width: 720px) {
       .nav-links {
         display: none;
       }
 
-      .hero-card {
-        min-height: 410px;
-      }
-
-      .stats {
+      .hero-metrics {
         grid-template-columns: 1fr;
       }
 
-      .stat {
-        padding: 10px 12px;
+      .hero-stage {
+        min-height: 430px;
       }
 
-      .viewer-top {
-        align-items: flex-start;
-        flex-direction: column;
+      .floating-note {
+        display: none;
       }
 
-      .viewer-wrapper {
-        height: 72vh;
-        min-height: 380px;
+      .characters {
+        grid-template-columns: 1fr;
+      }
+
+      .reader-head,
+      .reader-foot {
+        grid-template-columns: 1fr;
+      }
+
+      .viewer-frame {
+        height: 74vh;
+        min-height: 470px;
       }
     }
   </style>
 </head>
 
 <body>
+  <div class="nebula"></div>
   <div class="planet one"></div>
   <div class="planet two"></div>
-  <div class="orbit"></div>
 
   <nav class="nav">
     <div class="brand">
       <div class="brand-mark">🌌</div>
-      <div>Carpinchio Cósmico</div>
+      <div class="brand-title">
+        <strong>El Carpinchio Cósmico</strong>
+        <span>Las aventuras del superhéroe</span>
+      </div>
     </div>
 
     <div class="nav-links">
-      <a href="#aventuras">Aventuras</a>
-      <a href="#visor">Leer cómic</a>
-      <a href="#mision">Misión</a>
+      <a href="#historia">Historia</a>
+      <a href="#cuenta-atras">Cuenta atrás</a>
+      <a href="#personajes">Personajes</a>
+      <a href="#leer">Leer cómic</a>
     </div>
   </nav>
 
   <main>
     <section class="hero">
       <div class="hero-copy">
-        <div class="tag">Bitácora espacial · Temporada 01</div>
-        <h1>Las aventuras de <span>Carpinchio Cósmico</span></h1>
+        <div class="tag">Archivo #1 · Crónicas de un nuevo superhéroe</div>
+        <h1>El viaje del <span>Carpinchio Cósmico</span> acaba de empezar</h1>
         <p>
-          Un capibara intergaláctico, una nave medio rota y una galaxia llena de planetas rarísimos.
-          Entra en la misión y descubre el flipbook completo de esta aventura espacial.
+          Una aventura espacial con cuenta atrás, entrenamiento imposible, pandas cósmicos,
+          villanos del bosque y maestros legendarios. Del equilibrio estelar al poder absoluto,
+          Carpinchio tendrá que descubrir quién es antes de salvarlo todo.
         </p>
 
         <div class="actions">
-          <a class="btn btn-primary" href="#visor">🚀 Leer ahora</a>
-          <a class="btn btn-secondary" href="https://heyzine.com/flip-book/798cdb73ec.html" target="_blank" rel="noopener noreferrer">Abrir flipbook</a>
+          <a class="btn btn-primary" href="#leer">🚀 Leer la historia</a>
+          <a class="btn btn-secondary" href="#historia">Ver aventura</a>
+        </div>
+
+        <div class="hero-metrics">
+          <div class="metric">
+            <strong>19</strong>
+            <span>páginas de aventura</span>
+          </div>
+          <div class="metric">
+            <strong>46→26</strong>
+            <span>días de cuenta atrás</span>
+          </div>
+          <div class="metric">
+            <strong>#1</strong>
+            <span>primer número cósmico</span>
+          </div>
         </div>
       </div>
 
-      <div class="hero-card" aria-label="Carpinchio Cósmico">
-        <div class="carpinchio"></div>
+      <div class="hero-stage" aria-label="Carpinchio Cósmico flotando">
+        <img class="hero-img" src="hero.png" alt="Carpinchio Cósmico" />
+        <div class="floating-note note-one">
+          <strong>46 días</strong>
+          Paz, equilibrio estelar y una misión imposible.
+        </div>
+        <div class="floating-note note-two">
+          <strong>Poder cósmico</strong>
+          La aventura empieza cuando la calma se rompe.
+        </div>
+      </div>
+    </section>
 
-        <div class="stats">
-          <div class="stat">
-            <strong>01</strong>
-            <span>misión activa</span>
+    <section id="historia">
+      <div class="section-head">
+        <h2>Una historia de <span>caída, entrenamiento y poder</span></h2>
+        <p>
+          La aventura no va solo de viajar por el espacio: Carpinchio pasa por derrotas,
+          maestros rarísimos y pruebas cada vez más intensas hasta acercarse a su forma absoluta.
+        </p>
+      </div>
+
+      <div class="story-grid">
+        <article class="story-card">
+          <div class="story-icon">🌍</div>
+          <h3>El regreso a la Tierra</h3>
+          <p>
+            Tras el viaje cósmico, Carpinchio aterriza en un entorno inesperado: pandas,
+            bambú y una casa que se convierte en refugio antes de la tormenta.
+          </p>
+        </article>
+
+        <article class="story-card">
+          <div class="story-icon">🐼</div>
+          <h3>Pao-Pao y el entrenamiento</h3>
+          <p>
+            Pao-Pao aprende las antiguas artes carpínchicas. La calma, la paciencia y el control
+            se transforman en las primeras armas contra la oscuridad.
+          </p>
+        </article>
+
+        <article class="story-card">
+          <div class="story-icon">🌑</div>
+          <h3>Mono Sopa aparece</h3>
+          <p>
+            El poder se descontrola. La amenaza del bosque pone a prueba a los héroes y marca
+            el inicio del camino más duro: reconstruirse desde la derrota.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="cuenta-atras" class="countdown-strip">
+      <div class="countdown-box">
+        <h2>La cuenta atrás <span>no se detiene</span></h2>
+        <p>
+          Cada bloque de la historia está marcado por días restantes. Desde los 46 días iniciales
+          hasta los 26 días, la aventura acelera: entrenamiento, revelaciones, nuevos maestros
+          y el despertar del poder absoluto.
+        </p>
+      </div>
+
+      <div class="timeline">
+        <div class="time-item">
+          <div class="time-number">46<br>DÍAS</div>
+          <div>
+            <h3>El héroe aparece</h3>
+            <p>Carpinchio Cósmico se presenta como protector del equilibrio estelar.</p>
           </div>
-          <div class="stat">
-            <strong>∞</strong>
-            <span>planetas por descubrir</span>
+        </div>
+
+        <div class="time-item">
+          <div class="time-number">42<br>DÍAS</div>
+          <div>
+            <h3>Bienvenido a casa</h3>
+            <p>El aterrizaje en la Tierra abre una etapa más tranquila, pero solo por poco tiempo.</p>
           </div>
-          <div class="stat">
-            <strong>100%</strong>
-            <span>modo cósmico</span>
+        </div>
+
+        <div class="time-item">
+          <div class="time-number">39<br>DÍAS</div>
+          <div>
+            <h3>La derrota inevitable</h3>
+            <p>El conflicto con Mono Sopa empuja a Carpinchio hacia una transformación más oscura.</p>
+          </div>
+        </div>
+
+        <div class="time-item">
+          <div class="time-number">26<br>DÍAS</div>
+          <div>
+            <h3>El poder absoluto despierta</h3>
+            <p>El entrenamiento alcanza otro nivel: el sueño de poder acaba, pero la prueba real empieza.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="aventuras">
+    <section id="personajes">
       <div class="section-head">
-        <h2>Registro de aventuras</h2>
-        <p>Explora los capítulos del viaje: humor, exploración, misterio y mucho caos espacial.</p>
+        <h2>Personajes que empujan la <span>misión</span></h2>
+        <p>
+          Cada aliado y rival cumple una función dentro del viaje: enseñar, retar,
+          confundir o forzar al héroe a ir más allá.
+        </p>
       </div>
 
-      <div class="mission-grid">
-        <article class="mission">
-          <div class="icon">🪐</div>
-          <h3>Planeta Burbuja</h3>
-          <p>Carpinchio aterriza en un mundo donde todo flota, incluso sus ideas. El problema: la nave no sabe bajar.</p>
+      <div class="characters">
+        <article class="character">
+          <div class="avatar">🦫</div>
+          <h3>Carpinchio</h3>
+          <p>El héroe cósmico. Carga con el equilibrio estelar y con la presión de descubrir su verdadero poder.</p>
         </article>
 
-        <article class="mission">
-          <div class="icon">🛸</div>
-          <h3>El ovni equivocado</h3>
-          <p>Una señal desconocida aparece en el radar. Parece una amenaza, pero quizá solo sea alguien pidiendo merienda.</p>
+        <article class="character">
+          <div class="avatar">🐼</div>
+          <h3>Pao-Pao</h3>
+          <p>Aprendiz panda. Su entrenamiento y su destino quedan unidos al camino de Carpinchio.</p>
         </article>
 
-        <article class="mission">
-          <div class="icon">🌠</div>
-          <h3>La ruta de las estrellas</h3>
-          <p>Para volver a casa, Carpinchio debe seguir un mapa estelar que cambia cada vez que estornuda.</p>
+        <article class="character">
+          <div class="avatar">🦤</div>
+          <h3>Pedro el Picante</h3>
+          <p>Maestro inesperado. Enseña que el poder no solo está en la fuerza, también en el paso.</p>
+        </article>
+
+        <article class="character">
+          <div class="avatar">⚡</div>
+          <h3>Powerites</h3>
+          <p>Los maestros finales. Representan el entrenamiento más duro antes del poder absoluto.</p>
         </article>
       </div>
     </section>
 
-    <section id="visor" class="viewer-section">
+    <section id="leer" class="reader-section">
       <div class="section-head">
-        <h2>Lee el flipbook</h2>
-        <p>El visor está integrado directamente en la web para que puedas pasar las páginas sin salir de aquí.</p>
+        <h2>Ahora sí: <span>lee el cómic</span></h2>
+        <p>
+          Después de conocer la misión, entra en el visor y pasa las páginas del flipbook completo.
+        </p>
       </div>
 
-      <div class="viewer-card">
-        <div class="viewer-top">
-          <div class="viewer-title">
-            <span class="live-dot"></span>
-            <span>Transmisión desde la nave de Carpinchio</span>
+      <div class="reader-shell">
+        <div class="reader-head">
+          <div>
+            <small>Modo lectura activo</small>
+            <h2>El Carpinchio Cósmico · Las aventuras del Carpinchio Cósmico</h2>
           </div>
 
-          <a class="btn btn-secondary" href="https://heyzine.com/flip-book/798cdb73ec.html" target="_blank" rel="noopener noreferrer">
-            Pantalla completa
+          <a class="btn btn-primary" href="https://heyzine.com/flip-book/798cdb73ec.html" target="_blank" rel="noopener noreferrer">
+            Abrir pantalla completa
           </a>
         </div>
 
-        <div class="viewer-wrapper">
+        <div class="viewer-frame">
           <iframe
             src="https://heyzine.com/flip-book/798cdb73ec.html"
             allowfullscreen
             allow="clipboard-write"
             scrolling="no"
-            title="Las Aventuras de Carpinchio Cósmico">
+            title="Visor de El Carpinchio Cósmico">
           </iframe>
         </div>
-      </div>
-    </section>
 
-    <section id="mision" class="callout">
-      <div>
-        <h2>Próxima misión: expandir la galaxia</h2>
-        <p>
-          Puedes añadir nuevos capítulos, personajes, planetas y secretos ocultos. Esta web está preparada para crecer
-          como una landing oficial de la saga de Carpinchio Cósmico.
-        </p>
+        <div class="reader-foot">
+          <p>
+            Consejo: si lo ves desde móvil, usa el botón de pantalla completa para leer las viñetas con más comodidad.
+          </p>
+          <span class="pill">🚀 Archivo intergaláctico #1</span>
+        </div>
       </div>
-
-      <a class="btn btn-primary" href="#visor">Volver al cómic</a>
     </section>
   </main>
 
   <footer>
-    <span><strong>Carpinchio Cósmico</strong> · Archivo intergaláctico</span>
-    <span>Hecho para leer aventuras desde cualquier planeta.</span>
+    <span><strong>El Carpinchio Cósmico</strong> · Crónicas de un nuevo superhéroe</span>
+    <span>Una historia espacial con pandas, poder y cuenta atrás.</span>
   </footer>
 </body>
 </html>
